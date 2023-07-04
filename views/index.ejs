@@ -1,0 +1,29 @@
+
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+ <script src="relativetime.js"></script>
+
+  <div class="blogs content">
+    <h2>All Blogs</h2>
+
+    <% if (blogs.length > 0) { %>
+      <% blogs.forEach(blog => { %>
+        <a class="single" href="/blogs/<%= blog._id %>">
+          <h3 class="title"><%= blog.title %></h3>
+          <p class="snippet"><%= blog.snippet %></p>
+          <p class="createdAt">Created <%=formatRelativeTime(blog.createdAt)%></p>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p>There are no blogs to display...</p>
+    <% } %>
+    
+  </div>
+  
+
+  <%- include("./partials/footer.ejs") %>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script> -->
+</body>
+</html>
